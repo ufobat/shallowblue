@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 class PawnTest {
 
     @Test
-    fun randomPawnMoves() {
+    fun randomWhitePawnMoves() {
         val pawn = Pawn(Position.e4, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(3, pseudoLegalMoves.count())
@@ -19,26 +19,45 @@ class PawnTest {
         }
         assertEquals(
             listOf(Position.e5, Position.d5, Position.f5).sorted(),
-            pseudoLegalMoves.map { (it as Move).dest }.sorted()
+            pseudoLegalMoves.map { it.dest }.sorted()
         )
     }
 
     @Test
-    fun startingPawnMoves() {
+    fun randomBlackPawnMoves() {
+        val pawn = Pawn(Position.e4, Piece.BLACK)
+        val pseudoLegalMoves = pawn.pseudoLegalMoves()
+        assertEquals(3, pseudoLegalMoves.count())
+        assertEquals(
+            listOf(Position.e3, Position.d3, Position.f3).sorted(),
+            pseudoLegalMoves.map { it.dest }.sorted()
+        )
+    }
+
+    @Test
+    fun startingWhitePawnMoves() {
         val pawn = Pawn(Position.e2, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(4, pseudoLegalMoves.count())
-        pseudoLegalMoves.forEach {
-            assertTrue(it is Move)
-        }
         assertEquals(
             listOf(Position.e3, Position.e4, Position.d3, Position.f3).sorted(),
-            pseudoLegalMoves.map { (it as Move).dest }.sorted()
+            pseudoLegalMoves.map { it.dest }.sorted()
         )
     }
 
     @Test
-    fun promotingPawnAtTheSide() {
+    fun startingBlackPawnMoves() {
+        val pawn = Pawn(Position.e7, Piece.BLACK)
+        val pseudoLegalMoves = pawn.pseudoLegalMoves()
+        assertEquals(4, pseudoLegalMoves.count())
+        assertEquals(
+            listOf(Position.e6, Position.e5, Position.d6, Position.f6).sorted(),
+            pseudoLegalMoves.map { it.dest }.sorted()
+        )
+    }
+
+    @Test
+    fun promotingWhitePawnAtTheSide() {
         val pawn = Pawn(Position.h7, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
@@ -54,10 +73,30 @@ class PawnTest {
             ),
             pseudoLegalMoves.toSet()
         )
+    }
+
+    @Test
+    fun promotingBlackPawnAtTheSide() {
+        val pawn = Pawn(Position.h2, Piece.BLACK)
+        val pseudoLegalMoves = pawn.pseudoLegalMoves()
+        assertEquals(
+            setOf(
+                Move(Position.h2, Position.g1, Queen::class),
+                Move(Position.h2, Position.g1, Rook::class),
+                Move(Position.h2, Position.g1, Bishop::class),
+                Move(Position.h2, Position.g1, Knight::class),
+                Move(Position.h2, Position.h1, Queen::class),
+                Move(Position.h2, Position.h1, Rook::class),
+                Move(Position.h2, Position.h1, Bishop::class),
+                Move(Position.h2, Position.h1, Knight::class),
+            ),
+            pseudoLegalMoves.toSet()
+        )
 
     }
+
     @Test
-    fun promotingPawn() {
+    fun promotingWhitePawn() {
         val pawn = Pawn(Position.d7, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
@@ -77,6 +116,5 @@ class PawnTest {
             ),
             pseudoLegalMoves.toSet()
         )
-
     }
 }

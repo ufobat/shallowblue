@@ -10,7 +10,8 @@ class Pawn(pos: Position, type: Color) : Piece(pos, type) {
     // what about black pawns?
     private fun movesToDestination(destination: Position): Set<Move> {
         val result = mutableSetOf<Move>()
-        if(position.row == 6) {
+        // pawns of the wrong color can not move to 0 or 7
+        if (destination.row == 0 || destination.row == 7) {
             result.add(Move(position, destination, Queen::class))
             result.add(Move(position, destination, Rook::class))
             result.add(Move(position, destination, Bishop::class))
@@ -21,26 +22,25 @@ class Pawn(pos: Position, type: Color) : Piece(pos, type) {
         return result
     }
 
+    private fun forward() : Position? {
+        return if (isWhite()) this.position.north() else this.position.south()
+    }
+
     override fun pseudoLegalMoves(): List<Move> {
         val result = mutableListOf<Move>()
 
-        if (position.row + 1 < 8) {
-            // can move a step forward
+        val oneStepAhead = forward()!!
+        result.addAll(movesToDestination(oneStepAhead))
+        // white left or black right
+        oneStepAhead.west() ?.also {  result.addAll(movesToDestination(it)) }
 
-            // move forward
-            val oneStepAhead = position.north()!!
-            result.addAll(movesToDestination(oneStepAhead))
+        // white right or black left attack
+        oneStepAhead.east() ?.also {  result.addAll(movesToDestination(it)) }
 
-            // left attack
-            oneStepAhead.west() ?.also {  result.addAll(movesToDestination(it)) }
-
-            // right attack
-            oneStepAhead.east() ?.also {  result.addAll(movesToDestination(it)) }
-
-            if (position.row == 1) {
-                // 2 steps are allowed if you on the row 2
-                result.add(Move(position, oneStepAhead.north()!!))
-            }
+        if (isWhite() && position.row == 1) {
+            result.add(Move(position, oneStepAhead.north()!!))
+        } else if (isBlack() && position.row == 6) {
+            result.add(Move(position, oneStepAhead.south()!!))
         }
         return result
     }
