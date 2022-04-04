@@ -18,14 +18,14 @@
 4) Prüfen ob der Zug wirklich gültigt ist und Ausführung.  
    Aka: Alles was *vorher* passert ist, vorausgehende Züge also, werden berücksichtigt.
 
-   * Castleing  
+   * Castling
      Vorbedingungen *König* ist Unberührt, Turm ist unberührt!  
      Dann: Doppeltzug. Wenn der König sich bewegt muss auch der Turm Sich bewegen.
 
    * En passant  
 
      Vorbedingung: 
-     * Das Feld auf dem der *Bauer* sich bewegt ist leer. 
+     * Das Feld, auf dem der *Bauer* sich bewegt, ist leer.
      * Das Feld eines weiter ist von einem *gegnerischen Bauern* besetzt.
      * Der letzt zug hat ein *Weite von 2 Rows*
     
