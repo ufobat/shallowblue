@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -9,7 +10,7 @@ class KnightTest {
 
     @Test
     fun cornerKnightMoves() {
-        val knight = Knight(Position.a1)
+        val knight = Knight(Position.a1, Piece.WHITE)
         val moves = knight.pseudoLegalMoves()
 
         assertEquals(
@@ -23,7 +24,7 @@ class KnightTest {
 
     @Test
     fun sideKnightMoves() {
-        val knight = Knight(Position.a4)
+        val knight = Knight(Position.a4, Piece.WHITE)
         val moves = knight.pseudoLegalMoves()
 
         assertEquals(
@@ -39,7 +40,7 @@ class KnightTest {
 
     @Test
     fun middleKnightMoves() {
-        val knight = Knight(Position.e4)
+        val knight = Knight(Position.e4, Piece.WHITE)
         val moves = knight.pseudoLegalMoves()
 
         assertEquals(

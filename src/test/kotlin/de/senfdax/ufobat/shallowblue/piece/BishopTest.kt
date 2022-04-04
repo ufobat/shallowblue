@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -9,7 +10,7 @@ class BishopTest {
 
     @Test
     fun bishopCornerMove() {
-        val bishop = Bishop(Position.a1)
+        val bishop = Bishop(Position.a1, Piece.WHITE)
         val moves = bishop.pseudoLegalMoves()
 
         val expectation = listOf(
@@ -21,7 +22,7 @@ class BishopTest {
 
     @Test
     fun bishopSideMove() {
-        val bishop = Bishop(Position.a3)
+        val bishop = Bishop(Position.a3, Piece.WHITE)
         val moves = bishop.pseudoLegalMoves()
 
         val expectation = listOf(
@@ -34,7 +35,7 @@ class BishopTest {
 
     @Test
     fun bishopMiddleMove() {
-        val bishop = Bishop(Position.d3)
+        val bishop = Bishop(Position.d3, Piece.WHITE)
         val moves = bishop.pseudoLegalMoves()
 
         val expectation = listOf(

@@ -1,11 +1,12 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 
-class Knight(position: Position) : Piece(position) {
+class Knight(position: Position, type: Color) : Piece(position, type) {
     override fun pseudoLegalMoves(): List<Move> {
         return listOfNotNull(
             position?.north()?.north()?.let { listOf(it?.east(), it?.west()) },
@@ -17,4 +18,6 @@ class Knight(position: Position) : Piece(position) {
             .filterNotNull()
             .map { SimpleMove(position, it) }
     }
+
+    override fun moveTo(dest: Position) = Knight(dest, type)
 }

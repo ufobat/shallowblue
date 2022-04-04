@@ -1,11 +1,12 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 
-class Queen(position: Position) : Piece(position) {
+class Queen(position: Position, type: Color) : Piece(position, type) {
     override fun pseudoLegalMoves(): List<Move> {
         // Rook Movements
         val rook = (0..7).flatMap {
@@ -29,4 +30,6 @@ class Queen(position: Position) : Piece(position) {
 
         return (rook + bishop).map { SimpleMove(position,it) }
     }
+
+    override fun moveTo(dest: Position) = Queen(dest, type)
 }

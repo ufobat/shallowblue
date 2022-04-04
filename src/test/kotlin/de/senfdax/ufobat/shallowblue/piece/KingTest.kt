@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.CastleMove
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
@@ -10,7 +11,7 @@ class KingTest {
 
     @Test
     fun moveKingInTheCorner() {
-        val king = King(Position.a1)
+        val king = King(Position.a1, Piece.WHITE)
         val moves = king.pseudoLegalMoves()
         assertEquals(
             setOf(
@@ -24,7 +25,7 @@ class KingTest {
 
     @Test
     fun moveKingWithCastling() {
-        val king = King(Position.e1)
+        val king = King(Position.e1, Piece.WHITE)
         assertEquals(
             setOf(
                 SimpleMove(Position.e1, Position.d1),

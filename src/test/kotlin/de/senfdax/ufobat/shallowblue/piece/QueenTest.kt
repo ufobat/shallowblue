@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -9,7 +10,7 @@ class QueenTest {
 
     @Test
     fun queenCornerMoves() {
-        val queen = Queen(Position.h8)
+        val queen = Queen(Position.h8, Piece.WHITE)
         val moves = queen.pseudoLegalMoves()
 
         val expectation = listOf(

@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
 import de.senfdax.ufobat.shallowblue.move.PromotionMove
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
@@ -11,7 +12,7 @@ class PawnTest {
 
     @Test
     fun randomPawnMoves() {
-        val pawn = Pawn(Position.e4)
+        val pawn = Pawn(Position.e4, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(3, pseudoLegalMoves.count())
         pseudoLegalMoves.forEach {
@@ -25,7 +26,7 @@ class PawnTest {
 
     @Test
     fun startingPawnMoves() {
-        val pawn = Pawn(Position.e2)
+        val pawn = Pawn(Position.e2, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(4, pseudoLegalMoves.count())
         pseudoLegalMoves.forEach {
@@ -39,7 +40,7 @@ class PawnTest {
 
     @Test
     fun promotingPawnAtTheSide() {
-        val pawn = Pawn(Position.h7)
+        val pawn = Pawn(Position.h7, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
             setOf(
@@ -58,7 +59,7 @@ class PawnTest {
     }
     @Test
     fun promotingPawn() {
-        val pawn = Pawn(Position.d7)
+        val pawn = Pawn(Position.d7, Piece.WHITE)
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
             setOf(

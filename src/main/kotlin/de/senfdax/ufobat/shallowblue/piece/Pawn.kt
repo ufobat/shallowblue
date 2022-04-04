@@ -1,5 +1,6 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
@@ -7,7 +8,7 @@ import de.senfdax.ufobat.shallowblue.move.PromotionMove
 import de.senfdax.ufobat.shallowblue.move.SimpleMove
 import javax.print.attribute.standard.Destination
 
-class Pawn(pos: Position) : Piece(pos) {
+class Pawn(pos: Position, type: Color) : Piece(pos, type) {
 
     // what about black pawns?
     private fun movesToDestination(destination: Position): Set<Move> {
@@ -46,5 +47,7 @@ class Pawn(pos: Position) : Piece(pos) {
         }
         return result
     }
+
+    override fun moveTo(dest: Position) = Pawn(dest, type)
 }
 
