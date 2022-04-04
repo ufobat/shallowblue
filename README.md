@@ -42,6 +42,10 @@
    * Normaler Move  
    Vorbedingungen: auf der Position Move.to() befindet sich *kein* Stein
 
+## Nach dem Move
+Eine Figur könnte gepinnt sein. Das lässt sich Prüfen ob *nach* dem move bei der Evaluierung des
+Brettes ein Matt raus kommt.
+
 ## Anforderungen an den Move
   Wie bei der Schachnotation (e2e4 - Normal, e7e8q - Promotion, e1c1 - Castlein)
   * von Position
