@@ -4,8 +4,6 @@ import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.CastleMove
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
 
 class King(position: Position, type: Color) : Piece(position, type) {
     override fun pseudoLegalMoves(): List<Move> {
@@ -20,11 +18,11 @@ class King(position: Position, type: Color) : Piece(position, type) {
 
         val simpleMoves =  positions
             .filterNotNull()
-            .map { SimpleMove(position, it) }
+            .map { Move(position, it) }
 
         val castleMoves =
             if (position == Position.e1) {
-                listOf(CastleMove(Position.a1), CastleMove(Position.h1))
+                listOf(Move(position, Position.c1), Move(position, Position.g1))
             } else listOf()
 
         return simpleMoves + castleMoves

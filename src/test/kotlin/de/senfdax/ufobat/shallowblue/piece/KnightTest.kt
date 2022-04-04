@@ -2,7 +2,7 @@ package de.senfdax.ufobat.shallowblue.piece
 
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
+import de.senfdax.ufobat.shallowblue.Move
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -15,8 +15,8 @@ class KnightTest {
 
         assertEquals(
             setOf(
-                SimpleMove(Position.a1, Position.b3),
-                SimpleMove(Position.a1, Position.c2)
+                Move(Position.a1, Position.b3),
+                Move(Position.a1, Position.c2)
             ),
             moves.toSet()
         )
@@ -29,10 +29,10 @@ class KnightTest {
 
         assertEquals(
             setOf(
-                SimpleMove(Position.a4, Position.b2),
-                SimpleMove(Position.a4, Position.b6),
-                SimpleMove(Position.a4, Position.c3),
-                SimpleMove(Position.a4, Position.c5),
+                Move(Position.a4, Position.b2),
+                Move(Position.a4, Position.b6),
+                Move(Position.a4, Position.c3),
+                Move(Position.a4, Position.c5),
             ),
             moves.toSet()
         )
@@ -46,17 +46,17 @@ class KnightTest {
         assertEquals(
             setOf(
                 // west
-                SimpleMove(Position.e4, Position.c3),
-                SimpleMove(Position.e4, Position.c5),
+                Move(Position.e4, Position.c3),
+                Move(Position.e4, Position.c5),
                 // north
-                SimpleMove(Position.e4, Position.d6),
-                SimpleMove(Position.e4, Position.f6),
+                Move(Position.e4, Position.d6),
+                Move(Position.e4, Position.f6),
                 // east
-                SimpleMove(Position.e4, Position.g3),
-                SimpleMove(Position.e4, Position.g5),
+                Move(Position.e4, Position.g3),
+                Move(Position.e4, Position.g5),
                 //
-                SimpleMove(Position.e4, Position.d2),
-                SimpleMove(Position.e4, Position.f2),
+                Move(Position.e4, Position.d2),
+                Move(Position.e4, Position.f2),
             ),
             moves.toSet()
         )

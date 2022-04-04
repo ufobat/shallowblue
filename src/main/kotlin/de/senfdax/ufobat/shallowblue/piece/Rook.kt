@@ -4,7 +4,6 @@ import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
 
 class Rook(position: Position, type: Color) : Piece(position, type) {
     override fun pseudoLegalMoves(): List<Move> {
@@ -12,7 +11,7 @@ class Rook(position: Position, type: Color) : Piece(position, type) {
             .flatMap { listOf(Position.fromCoordinates(it, position.row), Position.fromCoordinates(position.col, it)) }
             .filterNotNull()
             .filterNot { it == position }
-            .map { SimpleMove(position, it) }
+            .map { Move(position, it) }
     }
 
     override fun moveTo(dest: Position): Piece = Queen(dest, type)

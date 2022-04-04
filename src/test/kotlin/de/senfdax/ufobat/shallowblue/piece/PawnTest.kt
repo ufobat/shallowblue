@@ -1,9 +1,8 @@
 package de.senfdax.ufobat.shallowblue.piece
 
+import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.PromotionMove
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -16,11 +15,11 @@ class PawnTest {
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(3, pseudoLegalMoves.count())
         pseudoLegalMoves.forEach {
-            assertTrue(it is SimpleMove)
+            assertTrue(it is Move)
         }
         assertEquals(
             listOf(Position.e5, Position.d5, Position.f5).sorted(),
-            pseudoLegalMoves.map { (it as SimpleMove).dest }.sorted()
+            pseudoLegalMoves.map { (it as Move).dest }.sorted()
         )
     }
 
@@ -30,11 +29,11 @@ class PawnTest {
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(4, pseudoLegalMoves.count())
         pseudoLegalMoves.forEach {
-            assertTrue(it is SimpleMove)
+            assertTrue(it is Move)
         }
         assertEquals(
             listOf(Position.e3, Position.e4, Position.d3, Position.f3).sorted(),
-            pseudoLegalMoves.map { (it as SimpleMove).dest }.sorted()
+            pseudoLegalMoves.map { (it as Move).dest }.sorted()
         )
     }
 
@@ -44,14 +43,14 @@ class PawnTest {
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
             setOf(
-                PromotionMove(Position.h7, Position.g8, Queen::class),
-                PromotionMove(Position.h7, Position.g8, Rook::class),
-                PromotionMove(Position.h7, Position.g8, Bishop::class),
-                PromotionMove(Position.h7, Position.g8, Knight::class),
-                PromotionMove(Position.h7, Position.h8, Queen::class),
-                PromotionMove(Position.h7, Position.h8, Rook::class),
-                PromotionMove(Position.h7, Position.h8, Bishop::class),
-                PromotionMove(Position.h7, Position.h8, Knight::class),
+                Move(Position.h7, Position.g8, Queen::class),
+                Move(Position.h7, Position.g8, Rook::class),
+                Move(Position.h7, Position.g8, Bishop::class),
+                Move(Position.h7, Position.g8, Knight::class),
+                Move(Position.h7, Position.h8, Queen::class),
+                Move(Position.h7, Position.h8, Rook::class),
+                Move(Position.h7, Position.h8, Bishop::class),
+                Move(Position.h7, Position.h8, Knight::class),
             ),
             pseudoLegalMoves.toSet()
         )
@@ -63,18 +62,18 @@ class PawnTest {
         val pseudoLegalMoves = pawn.pseudoLegalMoves()
         assertEquals(
             setOf(
-                PromotionMove(Position.d7, Position.d8, Queen::class),
-                PromotionMove(Position.d7, Position.d8, Rook::class),
-                PromotionMove(Position.d7, Position.d8, Bishop::class),
-                PromotionMove(Position.d7, Position.d8, Knight::class),
-                PromotionMove(Position.d7, Position.c8, Queen::class),
-                PromotionMove(Position.d7, Position.c8, Rook::class),
-                PromotionMove(Position.d7, Position.c8, Bishop::class),
-                PromotionMove(Position.d7, Position.c8, Knight::class),
-                PromotionMove(Position.d7, Position.e8, Queen::class),
-                PromotionMove(Position.d7, Position.e8, Rook::class),
-                PromotionMove(Position.d7, Position.e8, Bishop::class),
-                PromotionMove(Position.d7, Position.e8, Knight::class),
+                Move(Position.d7, Position.d8, Queen::class),
+                Move(Position.d7, Position.d8, Rook::class),
+                Move(Position.d7, Position.d8, Bishop::class),
+                Move(Position.d7, Position.d8, Knight::class),
+                Move(Position.d7, Position.c8, Queen::class),
+                Move(Position.d7, Position.c8, Rook::class),
+                Move(Position.d7, Position.c8, Bishop::class),
+                Move(Position.d7, Position.c8, Knight::class),
+                Move(Position.d7, Position.e8, Queen::class),
+                Move(Position.d7, Position.e8, Rook::class),
+                Move(Position.d7, Position.e8, Bishop::class),
+                Move(Position.d7, Position.e8, Knight::class),
             ),
             pseudoLegalMoves.toSet()
         )

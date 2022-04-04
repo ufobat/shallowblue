@@ -4,9 +4,6 @@ import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.PromotionMove
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
-import javax.print.attribute.standard.Destination
 
 class Pawn(pos: Position, type: Color) : Piece(pos, type) {
 
@@ -14,12 +11,12 @@ class Pawn(pos: Position, type: Color) : Piece(pos, type) {
     private fun movesToDestination(destination: Position): Set<Move> {
         val result = mutableSetOf<Move>()
         if(position.row == 6) {
-            result.add(PromotionMove(position, destination, Queen::class))
-            result.add(PromotionMove(position, destination, Rook::class))
-            result.add(PromotionMove(position, destination, Bishop::class))
-            result.add(PromotionMove(position, destination, Knight::class))
+            result.add(Move(position, destination, Queen::class))
+            result.add(Move(position, destination, Rook::class))
+            result.add(Move(position, destination, Bishop::class))
+            result.add(Move(position, destination, Knight::class))
         } else {
-            result.add(SimpleMove(position, destination))
+            result.add(Move(position, destination))
         }
         return result
     }
@@ -42,7 +39,7 @@ class Pawn(pos: Position, type: Color) : Piece(pos, type) {
 
             if (position.row == 1) {
                 // 2 steps are allowed if you on the row 2
-                result.add(SimpleMove(position, oneStepAhead.north()!!))
+                result.add(Move(position, oneStepAhead.north()!!))
             }
         }
         return result

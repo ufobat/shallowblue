@@ -4,7 +4,6 @@ import de.senfdax.ufobat.shallowblue.Color
 import de.senfdax.ufobat.shallowblue.Move
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
 
 class Queen(position: Position, type: Color) : Piece(position, type) {
     override fun pseudoLegalMoves(): List<Move> {
@@ -28,7 +27,7 @@ class Queen(position: Position, type: Color) : Piece(position, type) {
              else listOf()
         }.filterNotNull()
 
-        return (rook + bishop).map { SimpleMove(position,it) }
+        return (rook + bishop).map { Move(position,it) }
     }
 
     override fun moveTo(dest: Position) = Queen(dest, type)

@@ -2,8 +2,7 @@ package de.senfdax.ufobat.shallowblue.piece
 
 import de.senfdax.ufobat.shallowblue.Piece
 import de.senfdax.ufobat.shallowblue.Position
-import de.senfdax.ufobat.shallowblue.move.CastleMove
-import de.senfdax.ufobat.shallowblue.move.SimpleMove
+import de.senfdax.ufobat.shallowblue.Move
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -15,9 +14,9 @@ class KingTest {
         val moves = king.pseudoLegalMoves()
         assertEquals(
             setOf(
-                SimpleMove(Position.a1, Position.a2),
-                SimpleMove(Position.a1, Position.b1),
-                SimpleMove(Position.a1, Position.b2),
+                Move(Position.a1, Position.a2),
+                Move(Position.a1, Position.b1),
+                Move(Position.a1, Position.b2),
             ),
             moves.toSet()
         )
@@ -28,13 +27,14 @@ class KingTest {
         val king = King(Position.e1, Piece.WHITE)
         assertEquals(
             setOf(
-                SimpleMove(Position.e1, Position.d1),
-                SimpleMove(Position.e1, Position.d2),
-                SimpleMove(Position.e1, Position.e2),
-                SimpleMove(Position.e1, Position.f1),
-                SimpleMove(Position.e1, Position.f2),
-                CastleMove(Position.a1),
-                CastleMove(Position.h1),
+                Move(Position.e1, Position.d1),
+                Move(Position.e1, Position.d2),
+                Move(Position.e1, Position.e2),
+                Move(Position.e1, Position.f1),
+                Move(Position.e1, Position.f2),
+                // CastleMoves
+                Move(Position.e1, Position.c1),
+                Move(Position.e1, Position.g1),
             ),
             king.pseudoLegalMoves().toSet()
         )
